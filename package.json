@@ -1,13 +1,13 @@
 {
-  "name": "archivebox-browser-extension",
+  "name": "enlace-browser-extension",
   "private": true,
   "version": "1.3.3",
-  "description": "Automatically or manually send webpages to an ArchiveBox instance for archival.",
-  "author": "TJ Horner <me@tjhorner.dev>",
+  "description": "Automatically or manually send webpages to an enlace.space instance for archival.",
+  "author": "Erik Benoist <erik@benoist.dev>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "dev": "NODE_ENV=development webpack --watch"
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=development webpack --watch"
   },
   "keywords": [],
   "devDependencies": {
@@ -30,11 +30,11 @@
     "wildcard-domain-matcher": "^1.0.0"
   },
   "bugs": {
-    "url": "https://github.com/ArchiveBox/archivebox-browser-extension/issues"
+    "url": "https://github.com/ebenoist/enlace-browser-extension/issues"
   },
-  "homepage": "https://github.com/ArchiveBox/archivebox-browser-extension"
+  "homepage": "https://github.com/ebenoist/enlace-browser-extension",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ArchiveBox/archivebox-browser-extension.git"
-  },
+    "url": "https://github.com/ebenoist/enlace-browser-extension.git"
+  }
 }

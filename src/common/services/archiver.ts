@@ -20,7 +20,7 @@ export default class ArchiveBoxArchiver extends EventEmitter implements IArchive
     this.domainList = domainList
     this.config = config
   }
-  
+
   async shouldArchive(url: string): Promise<boolean> {
     const mode = await this.config.get(GlobalConfigKey.ArchiveMode, "allowlist")
 
@@ -78,26 +78,28 @@ export default class ArchiveBoxArchiver extends EventEmitter implements IArchive
   private async sendUrls(urls: string[]): Promise<boolean> {
     const baseUrl = await this.config.get(GlobalConfigKey.ArchiveBoxBaseUrl, "")
     const tags = await this.config.get(GlobalConfigKey.Tags, "")
+    const credentials = await this.config.get(GlobalConfigKey.Credentials, "")
 
     if (baseUrl === "") return
 
     const granted = await this.requestPermissionsForHost(baseUrl)
     if (!granted) return false
 
-    const body = new FormData()
-    body.append("url", urls.join("\n"))
-    body.append("tag", tags)
-    body.append("depth", "0")
-    body.append("parser", "url_list")
-
     this.addQueuedUrlCount(urls.length)
 
     try {
-      await fetch(`${baseUrl}/add/`, {
-        method: "post",
-        credentials: "include",
-        body
-      })
+      urls.forEach(async (url) => {
+        await fetch(`${baseUrl}/links`, {
+          method: "post",
+          headers: {
+            Authorization: `Basic ${credentials}`,
+          },
+          body: JSON.stringify({
+            url,
+            category: tags,
+          })
+        })
+      });
     } finally {
       this.addQueuedUrlCount(-urls.length)
     }

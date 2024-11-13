@@ -42,8 +42,13 @@
 
     <ConfigField
       configKey={GlobalConfigKey.ArchiveBoxBaseUrl}
-      friendlyName="ArchiveBox Base URL"
-      placeholder="https://example.com" />
+      friendlyName="Enlace Base URL"
+      placeholder="https://enlace.space" />
+
+    <ConfigField
+      configKey={GlobalConfigKey.Credentials}
+      friendlyName="Basic Auth Credentials"
+      placeholder="echo 'user:password' | base64" />
 
     <ConfigField
       configKey={GlobalConfigKey.Tags}
@@ -66,7 +71,7 @@
   select {
     margin-top: 3px;
   }
-  
+
   div {
     margin-bottom: 3px;
   }

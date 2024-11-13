@@ -1,6 +1,6 @@
 {
-  "name": "ArchiveBox Exporter",
-  "description": "Browser extension to save selected pages or browsing history to an ArchiveBox instance",
+  "name": "Enlace Exporter",
+  "description": "Browser extension to save selected pages or browsing history to enlace.space",
   "version": "0.0.1",
   "manifest_version": 2,
 
@@ -9,7 +9,7 @@
   },
 
   "browser_action": {
-    "default_title": "ArchiveBox",
+    "default_title": "Enlace Exporter",
     "default_popup": "static/action.html"
   },
 
